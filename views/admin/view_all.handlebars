@@ -1,0 +1,54 @@
+{{#if create_message}}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{create_message}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{{/if}}
+{{#if edit_message}}
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong>{{edit_message}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{{/if}}
+{{#if delete_message}}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{delete_message}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{{/if}}
+<table class="table table-bordered table-stripped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">TITLE</th>
+      <th scope="col">CATEGORIES</th>
+      <th scope="col">DATE</th>
+      <th scope="col">VIEW</th>
+      <th scope="col">UPDATE</th>
+      <th scope="col">DELETE</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each posts}}
+      <tr>
+        <th>{{id}}</th>
+        <td>{{title}}</td>
+        <td>{{Categories.name}}</td>
+        <td>{{generateDate date 'MMMM Do YYYY'}}</td>
+        <td><a href="/post/{{id}}" class="btn btn-block btn-success">View This Page</a></td>
+        <td><a href="/Videojet.admin/edit/{{id}}" class="btn btn-block btn-info">Update</a></td>
+        <td>
+          <form action="/Videojet.admin/{{id}}?_method=DELETE" method="POST">
+              <button class="btn btn-block btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

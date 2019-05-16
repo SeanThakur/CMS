@@ -1,0 +1,40 @@
+<h1>Comment</h1>
+<br>
+{{#if Comment_removed}}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{Comment_removed}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{{/if}}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered table-stripped table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Auther</th>
+                    <th scope="col">COMMENT</th>
+                    <th scope="col">DELETE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each comment}}
+                        <tr>
+                            <th>{{id}}</th>
+                            <td>{{user.firstName}}</td>
+                            <td>{{body}}</td>
+                            <td>
+                            <form action="/Videojet.admin/comment/{{id}}?_method=DELETE" method="POST">
+                                <button class="btn btn-block btn-danger">Delete</button>
+                            </form>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

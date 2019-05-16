@@ -1,0 +1,34 @@
+<div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="display-4 text-center">Edit Video Idea</h1>
+                        <form method="POST" action="/Videojet.admin/edit/{{post.id}}?_method=PUT">
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input required name="title" id="title" placeholder="Title For New Video" class="form-control" value="{{post.title}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="Categories">Categories</label>
+                                <select name="Categories" id="Categories" class="form-control">
+                                    {{#select post.Categories}}
+                                        {{#each cateShow}}         
+                                            <option value="{{id}}">{{name}}</option>                                  
+                                        {{/each}}
+                                    {{/select}}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="body">Descriptions</label>
+                                <textarea required name="body" id="body" rows="10" cols="30" placeholder="Description For Post." class="form-control">{{post.body}}</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                Update
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

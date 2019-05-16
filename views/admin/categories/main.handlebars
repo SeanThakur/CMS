@@ -1,0 +1,73 @@
+{{#if create_message_cat}}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{create_message_cat}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{{/if}}
+{{#if edit_message_cat}}
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong>{{edit_message_cat}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{{/if}}
+{{#if delete_message_cat}}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{delete_message_cat}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{{/if}}
+<h2>Categories</h2>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/Videojet.admin/categories/create" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name: </label>
+                            <input required class="form-control" name="name" id="name" placeholder="Create Categories">
+                        </div>
+                        <button type="submit" class="btn btn-block btn-primary">
+                            Create
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+
+            <table class="table table-bordered table-stripped table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">CATEGORIES</th>
+                    <th scope="col">UPDATE</th>
+                    <th scope="col">DELETE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each categories}}
+                        <tr>
+                            <th>{{id}}</th>
+                            <td>{{name}}</td>
+                            <td><a href="/Videojet.admin/categories/edit/{{id}}" class="btn btn-block btn-info">Update</a></td>
+                            <td>
+                            <form action="/Videojet.admin/categories/{{id}}?_method=DELETE" method="POST">
+                                <button class="btn btn-block btn-danger">Delete</button>
+                            </form>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+                </table>
+
+        </div>
+    </div>
+</div>
